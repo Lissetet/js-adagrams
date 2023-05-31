@@ -1,3 +1,5 @@
+import { letterCounts, letterScores } from './gameConstants.js';
+
 export const drawLetters = () => {
   // Implement this method for wave 1
 };
