@@ -37,20 +37,23 @@ export const scoreWord = (word) => {
 };
 
 export const highestScoreFrom = (words) => {
-  let highestScore = 0;
-  let highestWord = '';
-  for (let word of words) {
-    const score = scoreWord(word);
-    if (score > highestScore) {
-      highestScore = score;
-      highestWord = word;
-    } else if (score === highestScore) {
-      if (word.length === 10 && highestWord.length !== 10) {
-        highestWord = word;
-      } else if (word.length < highestWord.length && highestWord.length !== 10) {
-        highestWord = word;
-      }
-    }
+  const scores = words.map ((word) => {
+    return {
+      score: scoreWord(word),
+      word: word,
+    };
+  });
+  const highestScore = Math.max(...scores.map(obj => obj.score));
+  const highestScores = scores.filter(obj => obj.score === highestScore);
+
+  if (highestScores.length === 1) {
+    return highestScores[0];
   }
-  return { word: highestWord, score: highestScore };
+
+  if (highestScores.some(obj => obj.word.length === 10)) {
+    return highestScores.find(obj => obj.word.length === 10);
+  } else {
+    const shortestWord = Math.min(...highestScores.map(obj => obj.word.length));
+    return highestScores.find(obj => obj.word.length === shortestWord);
+  }
 };
