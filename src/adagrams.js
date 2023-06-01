@@ -18,13 +18,14 @@ export const drawLetters = () => {
 
 export const usesAvailableLetters = (input, lettersInHand) => {
   const inputLetters = input.split('');
+
   for (let letter of inputLetters) {
-    if (lettersInHand.includes(letter)) {
-      lettersInHand.splice(lettersInHand.indexOf(letter), 1);
-    } else {
+    if (!lettersInHand.includes(letter)) {
       return false;
     }
+    lettersInHand.splice(lettersInHand.indexOf(letter), 1);
   }
+
   return true;
 };
 
@@ -39,8 +40,6 @@ export const scoreWord = (word) => {
   }
   return score;
 };
-
-console.log(scoreWord(''))
 
 export const highestScoreFrom = (words) => {
   let highestScore = 0;
