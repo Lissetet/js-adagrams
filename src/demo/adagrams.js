@@ -1,9 +1,14 @@
 import {
-  drawLetters,
-  usesAvailableLetters,
+  // drawLetters,
+  // usesAvailableLetters,
   scoreWord,
   highestScoreFrom,
+  Adagrams,
 } from "adagrams";
+
+const game = new Adagrams();
+
+const { drawLetters, usesAvailableLetters } = game;
 
 const Real = {
   drawLetters,
