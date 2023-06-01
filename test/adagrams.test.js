@@ -1,6 +1,5 @@
 import Adagrams from "adagrams";
-import { letterCounts, letterScores } from '../src/gameConstants';
-const game = new Adagrams(letterCounts, letterScores);
+const game = new Adagrams();
 
 const LETTER_POOL = {
   A: 9,

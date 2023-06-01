@@ -1,7 +1,6 @@
 import Adagrams from 'adagrams';
-import { letterCounts, letterScores } from '../src/gameConstants';
 
-const Real = new Adagrams(letterCounts, letterScores);
+const Real = new Adagrams();
 
 const Stub = {
   drawLetters() {

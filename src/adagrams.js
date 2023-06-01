@@ -1,5 +1,7 @@
+import { letterCounts, letterScores } from '../src/gameConstants';
+
 export default class Adagrams {
-  constructor(letterCounts, letterScores) {
+  constructor() {
     this.letterCounts = letterCounts;
     this.letterScores = letterScores;
   }
