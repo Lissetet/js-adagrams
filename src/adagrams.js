@@ -21,20 +21,20 @@ export class Adagrams {
 
     return hand;
   }
-}
 
-export const usesAvailableLetters = (input, lettersInHand) => {
-  const inputLetters = input.split('');
+  usesAvailableLetters(input, lettersInHand) {
+    const inputLetters = input.split('');
 
-  for (let letter of inputLetters) {
-    if (!lettersInHand.includes(letter)) {
-      return false;
+    for (let letter of inputLetters) {
+      if (!lettersInHand.includes(letter)) {
+        return false;
+      }
+      lettersInHand.splice(lettersInHand.indexOf(letter), 1);
     }
-    lettersInHand.splice(lettersInHand.indexOf(letter), 1);
-  }
 
-  return true;
-};
+    return true;
+  }
+}
 
 export const scoreWord = (word) => {
   const letters = word.toUpperCase().split('');

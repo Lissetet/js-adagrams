@@ -1,6 +1,6 @@
 import {
   // drawLetters,
-  usesAvailableLetters,
+  // usesAvailableLetters,
   scoreWord,
   highestScoreFrom,
   Adagrams,
@@ -8,7 +8,7 @@ import {
 
 const game = new Adagrams();
 
-const { drawLetters } = game;
+const { drawLetters, usesAvailableLetters } = game;
 
 const LETTER_POOL = {
   A: 9,
