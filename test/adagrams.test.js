@@ -1,9 +1,14 @@
 import {
-  drawLetters,
+  // drawLetters,
   usesAvailableLetters,
   scoreWord,
   highestScoreFrom,
+  Adagrams,
 } from "adagrams";
+
+const game = new Adagrams();
+
+const { drawLetters } = game;
 
 const LETTER_POOL = {
   A: 9,

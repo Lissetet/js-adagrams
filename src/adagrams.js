@@ -1,20 +1,27 @@
 import { letterCounts, letterScores } from './gameConstants.js';
 
-export const drawLetters = () => {
-  const availablePool = Array.from(
-    Object.entries(letterCounts).flatMap(([letter, count]) =>
-      Array(count).fill(letter)
-    )
-  );
+export class Adagrams {
+  constructor() {
+    this.letterCounts = letterCounts;
+    this.letterScores = letterScores;
+  }
 
-  const hand = Array.from({ length: 10 }, () => {
-    const randomIndex = Math.floor(Math.random() * availablePool.length);
-    const [selectedLetter] = availablePool.splice(randomIndex, 1);
-    return selectedLetter;
-  });
+  drawLetters() {
+    const availablePool = Array.from(
+      Object.entries(letterCounts).flatMap(([letter, count]) =>
+        Array(count).fill(letter)
+      )
+    );
 
-  return hand;
-};
+    const hand = Array.from({ length: 10 }, () => {
+      const randomIndex = Math.floor(Math.random() * availablePool.length);
+      const [selectedLetter] = availablePool.splice(randomIndex, 1);
+      return selectedLetter;
+    });
+
+    return hand;
+  }
+}
 
 export const usesAvailableLetters = (input, lettersInHand) => {
   const inputLetters = input.split('');
