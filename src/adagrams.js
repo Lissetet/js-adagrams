@@ -31,13 +31,8 @@ export const usesAvailableLetters = (input, lettersInHand) => {
 
 export const scoreWord = (word) => {
   const letters = word.toUpperCase().split('');
-  let score = 0;
-  for (let letter of letters) {
-    score += letterScores[letter];
-  }
-  if (letters.length >= 7) {
-    score += 8;
-  }
+  let score = letters.reduce((sum, letter) => sum + (letterScores[letter] || 0), 0);
+  score = letters.length >= 7 ? score + 8 : score;
   return score;
 };
 
