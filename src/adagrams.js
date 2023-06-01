@@ -1,7 +1,20 @@
 import { letterCounts, letterScores } from './gameConstants.js';
 
 export const drawLetters = () => {
-  // Implement this method for wave 1
+  const availablePool = [];
+  for (let letter in letterCounts) {
+    for (let i = 0; i < letterCounts[letter]; i++) {
+      availablePool.push(letter);
+    }
+  }
+
+  const hand = [];
+  for (let i = 0; i < 10; i++) {
+    const randomIndex = Math.floor(Math.random() * availablePool.length);
+    hand.push(availablePool[randomIndex]);
+    availablePool.splice(randomIndex, 1);
+  }
+  return hand;
 };
 
 export const usesAvailableLetters = (input, lettersInHand) => {
