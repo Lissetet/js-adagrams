@@ -1,19 +1,18 @@
 import { letterCounts, letterScores } from './gameConstants.js';
 
 export const drawLetters = () => {
-  const availablePool = [];
-  for (let letter in letterCounts) {
-    for (let i = 0; i < letterCounts[letter]; i++) {
-      availablePool.push(letter);
-    }
-  }
+  const availablePool = Array.from(
+    Object.entries(letterCounts).flatMap(([letter, count]) =>
+      Array(count).fill(letter)
+    )
+  );
 
-  const hand = [];
-  for (let i = 0; i < 10; i++) {
+  const hand = Array.from({ length: 10 }, () => {
     const randomIndex = Math.floor(Math.random() * availablePool.length);
-    hand.push(availablePool[randomIndex]);
-    availablePool.splice(randomIndex, 1);
-  }
+    const [selectedLetter] = availablePool.splice(randomIndex, 1);
+    return selectedLetter;
+  });
+
   return hand;
 };
 
